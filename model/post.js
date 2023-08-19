@@ -5,6 +5,9 @@ const postSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    title: {
+      type: String,
+    },
     desc: {
       type: String,
       max: 500,
@@ -14,10 +17,10 @@ const postSchema = mongoose.Schema(
     },
     likedBy: {
       type: Array,
-      default: [],
     },
     comments: {
       type: Array,
+      default: [],
     },
   },
   { timestamps: true }

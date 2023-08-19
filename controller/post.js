@@ -49,11 +49,12 @@ const updatePost = async (req, res) => {
 //Like Post - PATCH
 const likePost = async (req, res) => {
   //req.params.id => post id that is to be update
-  //req.body.currentuser => user who clicked the like button
+  //req.body.currentUser => user who clicked the like button
   try {
     const post = await Post.findOneAndUpdate(
       { _id: req.params.id },
-      { $push: { likedBy: req.body.currentuser } }
+      { $push: { likedBy: req.body.currentUser } },
+      { new: true }
     );
     res.status(200).json(post);
   } catch (err) {
@@ -64,13 +65,39 @@ const likePost = async (req, res) => {
 //Dis like Post - PATCH
 const dislikePost = async (req, res) => {
   //req.params.id => post id that is to be update
-  //req.body.currentuser => user who clicked the like button
+  //req.body.currentUser => user who clicked the like button
   try {
     const post = await Post.findOneAndUpdate(
       { _id: req.params.id },
-      { $pull: { likedBy: req.body.currentuser } }
+      { $pull: { likedBy: req.body.currentUser } },
+      { new: true }
     );
     res.status(200).json(post);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+
+const deletePost = async (req, res) => {
+  //req.params.id => post id
+  try {
+    const post = await Post.findOneAndDelete({ _id: req.params.id });
+    res.status(200).json(post);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+
+//Get Posts of only users that current user follows
+const getFollowedPosts = async (req, res) => {
+  //req.body.userIds => Array of users, current user follows
+  console.log("hi");
+  console.log("entered user ids: ", req.body.userIds);
+  try {
+    const posts = await Post.find({
+      userId: { $in: req.body.userIds },
+    });
+    res.status(200).json(posts);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -80,3 +107,7 @@ exports.createPost = createPost;
 exports.getPosts = getPosts;
 exports.getPost = getPost;
 exports.updatePost = updatePost;
+exports.likePost = likePost;
+exports.dislikePost = dislikePost;
+exports.deletePost = deletePost;
+exports.getFollowedPosts = getFollowedPosts;
