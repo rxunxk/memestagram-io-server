@@ -5,19 +5,30 @@ const postSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    desc: {
+    author: {
+      type: String,
+      required: true,
+    },
+
+    title: {
+      type: String,
+      required: true,
+    },
+    caption: {
       type: String,
       max: 500,
     },
     img: {
       type: String,
+      default: "",
+      required: true,
     },
     likedBy: {
       type: Array,
-      default: [],
     },
     comments: {
       type: Array,
+      default: [],
     },
   },
   { timestamps: true }

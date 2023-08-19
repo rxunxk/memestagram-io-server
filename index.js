@@ -7,6 +7,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const authRouter = require("./routes/auth");
 const postRouter = require("./routes/post");
+const cors = require("cors");
 //Database connection
 dbCon().catch((err) => console.log(err));
 
@@ -16,6 +17,7 @@ async function dbCon() {
 }
 
 //Middlewares
+server.use(cors());
 server.use(express.json()); //body parser
 server.use(helmet());
 server.use(morgan("common"));
