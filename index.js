@@ -24,8 +24,8 @@ server.use(morgan("default"));
 server.use("/auth", authRouter.router);
 server.use("/users", userRouter.routes);
 server.use("/posts", postRouter.routes);
-server.use("*", (req, res) => {
-  res.send("Welcome to server");
+server.use("/", (req, res) => {
+  res.send("Welcome to the server");
 });
 server.listen(process.env.PORT, (req, res) => {
   console.log("server has started");
