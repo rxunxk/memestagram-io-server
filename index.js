@@ -20,10 +20,13 @@ async function dbCon() {
 server.use(cors());
 server.use(express.json()); //body parser
 server.use(helmet());
-server.use(morgan("common"));
+server.use(morgan("default"));
 server.use("/auth", authRouter.router);
 server.use("/users", userRouter.routes);
 server.use("/posts", postRouter.routes);
+server.use("*", (req, res) => {
+  res.send("Welcome to server");
+});
 server.listen(process.env.PORT, (req, res) => {
   console.log("server has started");
 });
