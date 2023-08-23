@@ -7,6 +7,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const authRouter = require("./routes/auth");
 const postRouter = require("./routes/post");
+const commentRouter = require("./routes/comment");
 const cors = require("cors");
 //Database connection
 dbCon().catch((err) => console.log(err));
@@ -24,6 +25,7 @@ server.use(morgan("default"));
 server.use("/auth", authRouter.router);
 server.use("/users", userRouter.routes);
 server.use("/posts", postRouter.routes);
+server.use("/comments", commentRouter.routes);
 server.use("/", (req, res) => {
   res.send("Welcome to the server");
 });
