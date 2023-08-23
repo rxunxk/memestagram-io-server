@@ -27,6 +27,10 @@
       "dest": "index.js"
     },
     {
+      "src": "/comments",
+      "dest": "index.js"
+    },
+    {
       "src": "/posts/(.*)",
       "dest": "index.js"
     }
