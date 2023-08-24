@@ -94,6 +94,17 @@ const getCommentsOnThisPost = async (req, res) => {
     res.status(400).json(err);
   }
 };
+
+const getTotalCommentsForPost = async (req, res) => {
+  try {
+    const commentCount = await Comment.countDocuments({
+      postId: req.params.id,
+    });
+    res.status(200).json(commentCount);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
 exports.createComment = createComment;
 exports.getComment = getComment;
 exports.getComments = getComments;
@@ -102,3 +113,4 @@ exports.deleteComment = deleteComment;
 exports.likeComment = likeComment;
 exports.dislikeComment = dislikeComment;
 exports.getCommentsOnThisPost = getCommentsOnThisPost;
+exports.getTotalCommentsForPost = getTotalCommentsForPost;

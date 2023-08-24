@@ -6,6 +6,7 @@ routes
   .get("/", commentController.getComments)
   .get("/:id", commentController.getComment)
   .get("/post/:id", commentController.getCommentsOnThisPost)
+  .get("/like/count/:id", commentController.getTotalCommentsForPost)
   .post("/", commentController.createComment)
   .patch("/update/:id", commentController.updateComment)
   .patch("/like/:id", commentController.likeComment)
