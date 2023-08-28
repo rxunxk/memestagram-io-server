@@ -16,6 +16,7 @@ const createUser = async (req, res) => {
       userName: req.body.userName,
       email: req.body.email,
       password: hashedPassword,
+      profilePicture: req.body.profilePicture,
     });
 
     //saving new user to the db
