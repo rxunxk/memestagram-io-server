@@ -9,7 +9,10 @@ const postSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-
+    authorProfilPic: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
