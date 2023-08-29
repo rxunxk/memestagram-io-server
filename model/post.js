@@ -9,7 +9,7 @@ const postSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    authorProfilPic: {
+    authorProfilePic: {
       type: String,
       required: true,
     },
