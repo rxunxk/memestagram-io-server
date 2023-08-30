@@ -9,6 +9,7 @@ const authRouter = require("./routes/auth");
 const postRouter = require("./routes/post");
 const commentRouter = require("./routes/comment");
 const cors = require("cors");
+
 //Database connection
 dbCon().catch((err) => console.log(err));
 
