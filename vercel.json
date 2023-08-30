@@ -29,6 +29,7 @@
     {
       "src": "/comments/(.*)",
       "dest": "index.js"
-    }
+    },
+    { "src": "/[^.]+", "dest": "/", "status": 200 }
   ]
 }
