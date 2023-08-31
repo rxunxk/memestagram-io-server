@@ -80,7 +80,7 @@ const dislikeComment = async (req, res) => {
 const deleteComment = async (req, res) => {
   try {
     const comment = await Comment.findOneAndDelete({ _id: req.params.id });
-    res.status(201).json(comment);
+    res.status(200).json(comment);
   } catch (err) {
     res.status(400).json(err);
   }
