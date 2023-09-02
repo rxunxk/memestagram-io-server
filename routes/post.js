@@ -7,6 +7,7 @@ routes
   .post("/followed", postController.getFollowedPosts)
   .get("/", postController.getPosts)
   .get("/:id", postController.getPost)
+  .get("/user/:id", postController.getThisUsersPosts)
   .patch("/update/:id", postController.updatePost)
   .patch("/like/:id", postController.likePost)
   .patch("/dislike/:id", postController.dislikePost)

@@ -102,6 +102,16 @@ const getFollowedPosts = async (req, res) => {
   }
 };
 
+const getThisUsersPosts = async (req, res) => {
+  try {
+    const posts = await Post.find({
+      userId: req.userId,
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+
 exports.createPost = createPost;
 exports.getPosts = getPosts;
 exports.getPost = getPost;
@@ -110,3 +120,4 @@ exports.likePost = likePost;
 exports.dislikePost = dislikePost;
 exports.deletePost = deletePost;
 exports.getFollowedPosts = getFollowedPosts;
+exports.getThisUsersPosts = getThisUsersPosts;
