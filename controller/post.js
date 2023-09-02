@@ -105,7 +105,7 @@ const getFollowedPosts = async (req, res) => {
 const getThisUsersPosts = async (req, res) => {
   try {
     const posts = await Post.find({
-      userId: req.params.userId,
+      userId: req.params.id,
     });
     res.status(200).json(posts);
   } catch (err) {
